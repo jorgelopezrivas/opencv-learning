@@ -7,26 +7,26 @@ def nothing(x):
 
 
 cv2.namedWindow('control')
-kernel = np.ones((20,20), np.uint8)
+kernel = np.ones((4,4), np.uint8)
 
 # Hue
-lh = 106
-hh = 158
+lh = 23
+hh = 88
 cv2.createTrackbar('lh','control',0,255,nothing)
 cv2.setTrackbarPos('lh', 'control', lh)
 cv2.createTrackbar('hh','control',0,255,nothing)
 cv2.setTrackbarPos('hh', 'control', hh)
 
 #Saturation 
-ls = 83
-hs = 168
+ls = 36
+hs = 255
 cv2.createTrackbar('ls','control',0,255,nothing)
 cv2.setTrackbarPos('ls', 'control', ls)
 cv2.createTrackbar('hs','control',0,255,nothing)
 cv2.setTrackbarPos('hs', 'control', hs)
 
-lv = 0
-hv = 72
+lv = 202
+hv = 255
 cv2.createTrackbar('lv','control',0,255,nothing)
 cv2.setTrackbarPos('lv', 'control', lv)
 cv2.createTrackbar('hv','control',0,255,nothing)
@@ -58,7 +58,7 @@ while(1):
 		cX = int(M["m10"] / M["m00"])
 		cY = int(M["m01"] / M["m00"])
 		cv2.circle(frame, (cX, cY),10, (0,0,255), 2)
-	#cv2.imshow('video',frame)
+	cv2.imshow('video',frame)
 	cv2.imshow('detector', closing)
 	if cv2.waitKey(1) & 0xFF == ord('q'):
 		break
