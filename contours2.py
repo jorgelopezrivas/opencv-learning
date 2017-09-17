@@ -3,10 +3,11 @@ import cv2
 
 # Look for Contours using hsv space
 
-img = cv2.imread('./images/perspective-11-small.jpg',1)
+img = cv2.imread('./images/perspective-06-small.jpg',1)
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 h,s,v = cv2.split(hsv)
-blur = cv2.medianBlur(v,5)
+#blur = cv2.medianBlur(v,5)
+blur = cv2.GaussianBlur(v, (5,5),0)
 _, thresh = cv2.threshold(blur,127,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 _, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
